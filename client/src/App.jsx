@@ -65,7 +65,7 @@ function AnimatedRoutes() {
           </Routes>
         </AnimatePresence>
       </Suspense>
-      {!isAdmin && <Footer />}
+      {!isAdmin && !isHome && <Footer />}
     </>
   );
 }

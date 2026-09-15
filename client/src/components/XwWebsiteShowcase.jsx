@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Share2, ArrowRight, Check, Send, Phone, MessageSquare } from 'lucide-react';
+import ParticleNetwork3D from './ParticleNetwork3D';
 import { submitEnquiry } from '../utils/api';
 
 const SLIDES = [
@@ -9,51 +10,46 @@ const SLIDES = [
     id: 'home',
     nav: 'HOME',
     index: '001 / 005',
-    headingLine1: 'GROWING SMARTER',
-    headingLine2: 'WITH SCIENCE',
-    subtitle: 'We specialize in workflow automation and concept-focused Physics & Chemistry education for Classes 9, 10, 11 & 12.',
-    footerNote: 'Helping forward-looking students build lifelong conceptual clarity and exam confidence.',
-    videoTime: 0.5,
+    headingLine1: 'UNDERSTAND THE CONCEPT.',
+    headingLine2: 'MASTER THE SCIENCE.',
+    subtitle: 'Dedicated Physics & Chemistry coaching for Classes 9, 10, 11 & 12. Taught through fundamental conceptual clarity, visual derivations, and structured numerical practice.',
+    footerNote: 'Building lifelong scientific fundamentals and academic confidence.',
   },
   {
-    id: 'services',
-    nav: 'SERVICES',
+    id: 'subjects',
+    nav: 'SUBJECTS',
     index: '002 / 005',
-    headingLine1: "WE'RE A FULL-SERVICE",
-    headingLine2: 'SCIENCE COACHING ACADEMY.',
-    subtitle: 'We deliver complete Physics & Chemistry conceptual mastery under one roof.',
-    footerNote: 'Two specialized faculty members • Conceptual problem solving • Personal doubt resolution.',
-    videoTime: 2.3,
+    headingLine1: 'TWO DEDICATED TEACHERS.',
+    headingLine2: 'ONE STRONG FOUNDATION.',
+    subtitle: 'We focus exclusively on Physics and Chemistry. By understanding the core principles behind every formula and chemical equation, students solve complex problems with intuition.',
+    footerNote: 'Two core subjects • Zero rote memorization • Individual doubt resolution.',
   },
   {
-    id: 'work',
-    nav: 'WORK',
+    id: 'courses',
+    nav: 'COURSES',
     index: '003 / 005',
     headingLine1: 'DISCOVER',
     headingLine2: 'OUR COURSES',
-    subtitle: 'We deliver complete scientific foundation and board preparation under one roof.',
-    footerNote: 'Structured batches for Classes 9, 10, 11 and 12.',
-    videoTime: 6.5,
+    subtitle: 'Comprehensive batches engineered for board excellence and higher secondary scientific foundations.',
+    footerNote: 'Focused programs for Classes 9, 10, 11 and 12.',
   },
   {
-    id: 'plans',
-    nav: 'PLANS',
+    id: 'teachers',
+    nav: 'TEACHERS',
     index: '004 / 005',
     headingLine1: 'LEARN FROM',
     headingLine2: 'SUBJECT EXPERTS',
-    subtitle: 'Two dedicated teachers with decades of specialized Physics and Chemistry coaching.',
-    footerNote: 'Small batch sizes • Weekly practice sheets • Mock board examinations.',
-    videoTime: 6.5,
+    subtitle: 'Two specialized teachers with decades of dedicated mentoring in Physics and Chemistry.',
+    footerNote: 'Direct teacher contact • Small batch sizes • Personal mentorship.',
   },
   {
     id: 'contact',
     nav: 'CONTACT',
     index: '005 / 005',
-    headingLine1: 'GET IN TOUCH',
-    headingLine2: 'WITH PHYSICHEM',
+    headingLine1: 'START YOUR',
+    headingLine2: 'LEARNING JOURNEY',
     subtitle: 'Admissions open for Classes 9–12. Book a counseling session or talk directly with our faculty.',
-    footerNote: 'Admissions open for academic session 2026–2027.',
-    videoTime: 0.5,
+    footerNote: 'Admissions open for the 2026–2027 academic session.',
   },
 ];
 
@@ -67,19 +63,8 @@ export default function XwWebsiteShowcase() {
     subject: 'Both (Physics & Chemistry)',
     message: '',
   });
-  const videoRef = useRef(null);
   const containerRef = useRef(null);
   const isScrollingRef = useRef(false);
-
-  // Sync video playback to active slide
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const targetTime = SLIDES[currentSlide].videoTime;
-    video.currentTime = targetTime;
-    video.play().catch(() => {});
-  }, [currentSlide]);
 
   // Smooth wheel navigation between slides
   useEffect(() => {
@@ -224,22 +209,13 @@ export default function XwWebsiteShowcase() {
           </div>
         </div>
 
-        {/* Central 3D Visual from XW video with radial edge mask to blend seamlessly */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
-          <video
-            ref={videoRef}
-            muted
-            playsInline
-            loop
-            src="/videos/xw-showcase.mp4"
-            style={{
-              WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 72%)',
-              maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 72%)',
-            }}
-            className={`w-[700px] h-[700px] lg:w-[900px] lg:h-[900px] object-contain transition-opacity duration-700 ${
-              currentSlide < 2 ? 'opacity-95 scale-100' : 'opacity-0 scale-90'
-            }`}
-          />
+        {/* Central Native 3D Particle Network Canvas (Replaces the external video!) */}
+        <div className={`absolute inset-0 z-0 flex items-center justify-center pointer-events-none transition-opacity duration-700 ${
+          currentSlide < 2 ? 'opacity-100 scale-100' : 'opacity-20 scale-90'
+        }`}>
+          <div className="w-[650px] h-[650px] lg:w-[820px] lg:h-[820px]">
+            <ParticleNetwork3D currentSlide={currentSlide} />
+          </div>
         </div>
 
         {/* Dynamic Center Slide Content */}
@@ -261,7 +237,7 @@ export default function XwWebsiteShowcase() {
                     <span>{slide.headingLine2}</span>
                   </h1>
 
-                  <p className="text-[#3A3E45] text-base sm:text-xl font-normal leading-relaxed max-w-lg mb-10">
+                  <p className="text-[#3A3E45] text-base sm:text-lg font-normal leading-relaxed max-w-lg mb-10">
                     {slide.subtitle}
                   </p>
 
@@ -271,7 +247,7 @@ export default function XwWebsiteShowcase() {
                       onClick={() => setCurrentSlide(4)}
                       className="px-8 py-3.5 rounded-full bg-[#101215] hover:bg-black text-white font-semibold text-xs tracking-wider uppercase shadow-[0_14px_28px_-4px_rgba(245,158,11,0.8)] hover:shadow-[0_18px_38px_rgba(245,158,11,0.95)] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
                     >
-                      Get In Touch
+                      Enquire Now
                     </button>
 
                     {/* Secondary Button: Outlined pill */}
@@ -279,13 +255,13 @@ export default function XwWebsiteShowcase() {
                       onClick={() => setCurrentSlide(2)}
                       className="px-8 py-3.5 rounded-full border border-black/30 hover:border-black text-[#15171A] font-semibold text-xs tracking-wider uppercase transition-all duration-300 hover:bg-black/5 cursor-pointer"
                     >
-                      Our Services
+                      Our Courses
                     </button>
                   </div>
                 </div>
               )}
 
-              {/* ================= SLIDE 2: SERVICES (002 / 005) ================= */}
+              {/* ================= SLIDE 2: SUBJECTS (002 / 005) ================= */}
               {currentSlide === 1 && (
                 <div className="max-w-2xl pt-2 pb-6">
                   <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#15171A] leading-[1.1] mb-6">
@@ -323,7 +299,7 @@ export default function XwWebsiteShowcase() {
                 </div>
               )}
 
-              {/* ================= SLIDE 3: WORK / COURSES (003 / 005) ================= */}
+              {/* ================= SLIDE 3: COURSES (003 / 005) ================= */}
               {currentSlide === 2 && (
                 <div className="w-full">
                   <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
@@ -444,7 +420,7 @@ export default function XwWebsiteShowcase() {
                 </div>
               )}
 
-              {/* ================= SLIDE 4: PLANS / TEACHERS (004 / 005) ================= */}
+              {/* ================= SLIDE 4: TEACHERS (004 / 005) ================= */}
               {currentSlide === 3 && (
                 <div className="w-full max-w-4xl">
                   <div className="mb-8">
