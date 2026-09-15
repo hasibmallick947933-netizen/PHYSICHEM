@@ -11,39 +11,39 @@ const SLIDES = [
     index: '001 / 005',
     headingLine1: 'GROWING SMARTER',
     headingLine2: 'WITH SCIENCE',
-    subtitle: 'We specialize in concept-first Physics and Chemistry coaching for Classes 9, 10, 11 & 12.',
+    subtitle: 'We specialize in workflow automation and concept-focused Physics & Chemistry education for Classes 9, 10, 11 & 12.',
     footerNote: 'Helping forward-looking students build lifelong conceptual clarity and exam confidence.',
-    showPlexus: true,
+    videoTime: 0.5,
   },
   {
-    id: 'subjects',
+    id: 'services',
     nav: 'SERVICES',
     index: '002 / 005',
-    headingLine1: "WE'RE A DEDICATED",
+    headingLine1: "WE'RE A FULL-SERVICE",
     headingLine2: 'SCIENCE COACHING ACADEMY.',
     subtitle: 'We deliver complete Physics & Chemistry conceptual mastery under one roof.',
-    footerNote: 'Two subjects. Two dedicated teachers. Zero rote learning.',
-    showRing: true,
+    footerNote: 'Two specialized faculty members • Conceptual problem solving • Personal doubt resolution.',
+    videoTime: 2.3,
   },
   {
-    id: 'courses',
+    id: 'work',
     nav: 'WORK',
     index: '003 / 005',
     headingLine1: 'DISCOVER',
     headingLine2: 'OUR COURSES',
-    subtitle: 'Structured curriculum engineered for school boards and higher secondary excellence.',
-    footerNote: 'Comprehensive batches for Classes 9, 10, 11 and 12.',
-    showCards: true,
+    subtitle: 'We deliver complete scientific foundation and board preparation under one roof.',
+    footerNote: 'Structured batches for Classes 9, 10, 11 and 12.',
+    videoTime: 6.5,
   },
   {
-    id: 'teachers',
-    nav: 'TEAM',
+    id: 'plans',
+    nav: 'PLANS',
     index: '004 / 005',
     headingLine1: 'LEARN FROM',
     headingLine2: 'SUBJECT EXPERTS',
-    subtitle: 'Two dedicated teachers with deep subject mastery and personalized student mentorship.',
-    footerNote: 'Direct teacher contact • Small batch sizes • Individual doubt resolution.',
-    showTeachers: true,
+    subtitle: 'Two dedicated teachers with decades of specialized Physics and Chemistry coaching.',
+    footerNote: 'Small batch sizes • Weekly practice sheets • Mock board examinations.',
+    videoTime: 6.5,
   },
   {
     id: 'contact',
@@ -51,9 +51,9 @@ const SLIDES = [
     index: '005 / 005',
     headingLine1: 'GET IN TOUCH',
     headingLine2: 'WITH PHYSICHEM',
-    subtitle: 'Admissions open for Classes 9–12. Send an enquiry or talk directly with our faculty.',
-    footerNote: 'Admissions counseling available every day.',
-    showContact: true,
+    subtitle: 'Admissions open for Classes 9–12. Book a counseling session or talk directly with our faculty.',
+    footerNote: 'Admissions open for academic session 2026–2027.',
+    videoTime: 0.5,
   },
 ];
 
@@ -67,35 +67,45 @@ export default function XwWebsiteShowcase() {
     subject: 'Both (Physics & Chemistry)',
     message: '',
   });
+  const videoRef = useRef(null);
   const containerRef = useRef(null);
   const isScrollingRef = useRef(false);
 
-  // Handle smooth scroll wheel navigation between slides
+  // Sync video playback to active slide
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const targetTime = SLIDES[currentSlide].videoTime;
+    video.currentTime = targetTime;
+    video.play().catch(() => {});
+  }, [currentSlide]);
+
+  // Smooth wheel navigation between slides
   useEffect(() => {
     const handleWheel = (e) => {
       const container = containerRef.current;
       if (!container) return;
 
-      // Check if container is in viewport
       const rect = container.getBoundingClientRect();
-      const inView = rect.top <= 100 && rect.bottom >= window.innerHeight - 100;
+      const inView = rect.top <= 80 && rect.bottom >= window.innerHeight - 80;
       if (!inView) return;
 
       if (isScrollingRef.current) return;
 
-      if (e.deltaY > 40) {
+      if (e.deltaY > 35) {
         if (currentSlide < SLIDES.length - 1) {
           e.preventDefault();
           isScrollingRef.current = true;
           setCurrentSlide((prev) => prev + 1);
-          setTimeout(() => { isScrollingRef.current = false; }, 800);
+          setTimeout(() => { isScrollingRef.current = false; }, 600);
         }
-      } else if (e.deltaY < -40) {
+      } else if (e.deltaY < -35) {
         if (currentSlide > 0) {
           e.preventDefault();
           isScrollingRef.current = true;
           setCurrentSlide((prev) => prev - 1);
-          setTimeout(() => { isScrollingRef.current = false; }, 800);
+          setTimeout(() => { isScrollingRef.current = false; }, 600);
         }
       }
     };
@@ -109,7 +119,7 @@ export default function XwWebsiteShowcase() {
     };
   }, [currentSlide]);
 
-  // Keyboard arrow navigation
+  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
@@ -134,7 +144,7 @@ export default function XwWebsiteShowcase() {
       await submitEnquiry(formData);
       setIsFormSubmitted(true);
     } catch {
-      setIsFormSubmitted(true); // Graceful fallback
+      setIsFormSubmitted(true);
     }
   };
 
@@ -142,26 +152,25 @@ export default function XwWebsiteShowcase() {
     <div
       ref={containerRef}
       id="main-showcase"
-      className="relative min-h-screen py-6 sm:py-10 px-3 sm:px-6 lg:px-10 flex items-center justify-center bg-[#1c1e22]"
+      className="relative min-h-screen py-4 sm:py-8 lg:py-10 px-2 sm:px-6 lg:px-8 flex items-center justify-center bg-[#181a1e]"
     >
-      {/* Outer ambient studio glow matching XW video */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[80vh] bg-amber-500/10 blur-[180px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70vw] h-[30vh] bg-[#38BDF8]/10 blur-[150px] rounded-full pointer-events-none" />
+      {/* Outer Studio Ambient Backlight Glow from XW video */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95vw] h-[85vh] bg-amber-500/10 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[60vw] h-[20vh] bg-amber-600/15 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Titanium Website Frame with 28px rounded corners from XW video */}
-      <div className="relative w-full max-w-[1440px] min-h-[780px] lg:h-[880px] rounded-[24px] sm:rounded-[32px] bg-[#C3C3C3] text-[#15171A] shadow-[0_25px_70px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.2)] overflow-hidden flex flex-col justify-between p-6 sm:p-10 lg:p-12 transition-all duration-500">
+      {/* Titanium Website Window matching XW video (28px rounded corners, #C3C3C3 background) */}
+      <div className="relative w-full max-w-[1440px] min-h-[760px] lg:h-[860px] rounded-[24px] sm:rounded-[32px] bg-[#C3C3C3] text-[#15171A] shadow-[0_30px_90px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.25)] overflow-hidden flex flex-col justify-between p-6 sm:p-10 lg:p-12 transition-all duration-500">
         
-        {/* Top Navigation Bar with illuminated lamp light */}
+        {/* Top Navigation Bar with illuminated lamp light from XW video */}
         <div className="relative z-30 w-full">
-          <div className="flex items-center justify-between pb-4">
-            {/* Brand Logo */}
-            <Link to="/" className="font-heading text-lg sm:text-xl font-bold tracking-tight text-[#15171A] flex items-center gap-1">
-              <span>PHYSI</span>
-              <span className="text-[#0284C7]">CHEM</span>
+          <div className="flex items-center justify-between pb-3">
+            {/* Logo */}
+            <Link to="/" className="font-heading text-lg sm:text-xl font-bold tracking-tight text-[#15171A] uppercase">
+              PHYSICHEM
             </Link>
 
-            {/* Navigation Tabs with glowing lamp light indicator */}
-            <div className="hidden md:flex items-center gap-8 lg:gap-12">
+            {/* Navigation Tabs with illuminated lamp bar */}
+            <div className="hidden md:flex items-center gap-8 lg:gap-14">
               {SLIDES.map((s, idx) => {
                 const isActive = currentSlide === idx;
                 return (
@@ -174,17 +183,17 @@ export default function XwWebsiteShowcase() {
                       {s.nav}
                     </span>
 
-                    {/* Illuminated Lamp Light Effect */}
+                    {/* Illuminated Lamp Light matching XW video */}
                     {isActive && (
                       <motion.div
                         layoutId="xwLampIndicator"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                        className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 flex flex-col items-center pointer-events-none"
+                        transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                        className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 w-16 flex flex-col items-center pointer-events-none"
                       >
-                        {/* Golden lamp bar */}
-                        <div className="h-[2.5px] w-12 bg-amber-400 rounded-full shadow-[0_0_14px_3px_rgba(245,158,11,0.9),0_2px_8px_rgba(245,158,11,0.6)]" />
-                        {/* Downward light cone */}
-                        <div className="w-16 h-8 bg-gradient-to-b from-amber-400/30 to-transparent blur-sm -mt-0.5 rounded-b-full" />
+                        {/* Golden lamp bar sitting directly on the line */}
+                        <div className="h-[2.5px] w-12 bg-[#FFA834] rounded-full shadow-[0_0_16px_3px_#FFA834,0_2px_8px_rgba(255,168,52,0.7)]" />
+                        {/* Downward diffused light halo */}
+                        <div className="w-16 h-8 bg-gradient-to-b from-[#FFA834]/35 to-transparent blur-sm -mt-0.5 rounded-b-full" />
                       </motion.div>
                     )}
                   </button>
@@ -192,12 +201,12 @@ export default function XwWebsiteShowcase() {
               })}
             </div>
 
-            {/* Right Action / Dots */}
-            <div className="flex items-center gap-4 text-xs font-mono">
-              <span className="hidden sm:inline-block font-semibold tracking-wider text-[#15171A]">
-                CLASS 9–12
+            {/* Right Dots / Controls */}
+            <div className="flex items-center gap-3 text-xs font-mono text-black">
+              <span className="hidden sm:inline-block tracking-wider font-semibold text-[11px]">
+                CLASSES 9–12
               </span>
-              <div className="flex items-center gap-1 opacity-70">
+              <div className="flex items-center gap-1 opacity-80">
                 <span className="w-1.5 h-1.5 rounded-full bg-black" />
                 <span className="w-1.5 h-1.5 rounded-full bg-black" />
               </div>
@@ -205,9 +214,9 @@ export default function XwWebsiteShowcase() {
           </div>
 
           {/* Thin separator line spanning the entire width */}
-          <div className="w-full h-[1px] bg-black/10 relative" />
+          <div className="w-full h-[1px] bg-black/15 relative" />
 
-          {/* Slide index (001 / 005) below line on left */}
+          {/* Slide index (001 / 005) below line */}
           <div className="pt-3">
             <span className="text-[11px] font-mono tracking-widest text-black/70">
               {slide.index}
@@ -215,17 +224,20 @@ export default function XwWebsiteShowcase() {
           </div>
         </div>
 
-        {/* Central Background 3D Visual from XW video */}
+        {/* Central 3D Visual from XW video with radial edge mask to blend seamlessly */}
         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
-          {/* Loop/Sync Video for Slide 1 & 2 */}
           <video
-            autoPlay
-            loop
+            ref={videoRef}
             muted
             playsInline
+            loop
             src="/videos/xw-showcase.mp4"
-            className={`w-[680px] h-[680px] lg:w-[860px] lg:h-[860px] object-contain mix-blend-multiply transition-opacity duration-700 ${
-              currentSlide < 2 ? 'opacity-90 scale-100' : 'opacity-0 scale-90'
+            style={{
+              WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 72%)',
+              maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 72%)',
+            }}
+            className={`w-[700px] h-[700px] lg:w-[900px] lg:h-[900px] object-contain transition-opacity duration-700 ${
+              currentSlide < 2 ? 'opacity-95 scale-100' : 'opacity-0 scale-90'
             }`}
           />
         </div>
@@ -241,10 +253,10 @@ export default function XwWebsiteShowcase() {
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="w-full"
             >
-              {/* ================= SLIDE 1: HOME ================= */}
+              {/* ================= SLIDE 1: HOME (001 / 005) ================= */}
               {currentSlide === 0 && (
                 <div className="max-w-2xl pt-2 pb-6">
-                  <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#15171A] leading-[1.08] mb-6">
+                  <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#15171A] leading-[1.06] mb-6">
                     {slide.headingLine1} <br />
                     <span>{slide.headingLine2}</span>
                   </h1>
@@ -257,7 +269,7 @@ export default function XwWebsiteShowcase() {
                     {/* Primary Button: Jet-black pill with golden glow */}
                     <button
                       onClick={() => setCurrentSlide(4)}
-                      className="px-8 py-3.5 rounded-full bg-[#101215] hover:bg-black text-white font-semibold text-xs tracking-wider uppercase shadow-[0_14px_30px_-4px_rgba(245,158,11,0.75)] hover:shadow-[0_18px_40px_-2px_rgba(245,158,11,0.9)] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+                      className="px-8 py-3.5 rounded-full bg-[#101215] hover:bg-black text-white font-semibold text-xs tracking-wider uppercase shadow-[0_14px_28px_-4px_rgba(245,158,11,0.8)] hover:shadow-[0_18px_38px_rgba(245,158,11,0.95)] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
                     >
                       Get In Touch
                     </button>
@@ -267,13 +279,13 @@ export default function XwWebsiteShowcase() {
                       onClick={() => setCurrentSlide(2)}
                       className="px-8 py-3.5 rounded-full border border-black/30 hover:border-black text-[#15171A] font-semibold text-xs tracking-wider uppercase transition-all duration-300 hover:bg-black/5 cursor-pointer"
                     >
-                      Our Courses
+                      Our Services
                     </button>
                   </div>
                 </div>
               )}
 
-              {/* ================= SLIDE 2: PHILOSOPHY ================= */}
+              {/* ================= SLIDE 2: SERVICES (002 / 005) ================= */}
               {currentSlide === 1 && (
                 <div className="max-w-2xl pt-2 pb-6">
                   <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#15171A] leading-[1.1] mb-6">
@@ -286,24 +298,24 @@ export default function XwWebsiteShowcase() {
                   </p>
 
                   <div className="grid sm:grid-cols-2 gap-4 max-w-lg mb-8">
-                    <div className="p-5 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_20px_rgba(0,0,0,0.06)]">
+                    <div className="p-5 rounded-2xl bg-white/50 backdrop-blur-md border border-white/70 shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
                       <div className="font-heading font-bold text-lg text-[#15171A] mb-1">Physics Mastery</div>
                       <p className="text-xs text-[#4A4E57] leading-relaxed">
-                        Mechanics, Electromagnetism, Optics, and Modern Physics taught through physical intuition.
+                        Mechanics, Electrodynamics, Optics, and Modern Physics taught through physical models and derivations.
                       </p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_20px_rgba(0,0,0,0.06)]">
+                    <div className="p-5 rounded-2xl bg-white/50 backdrop-blur-md border border-white/70 shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
                       <div className="font-heading font-bold text-lg text-[#15171A] mb-1">Chemistry Clarity</div>
                       <p className="text-xs text-[#4A4E57] leading-relaxed">
-                        Organic reaction mechanisms, Physical equations, and Inorganic structures visualized clearly.
+                        Organic reaction mechanisms, Physical equations, and Inorganic bonding visualized with clear logic.
                       </p>
                     </div>
                   </div>
 
                   <button
                     onClick={() => setCurrentSlide(2)}
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#101215] text-white font-semibold text-xs tracking-wider uppercase shadow-[0_12px_28px_-4px_rgba(245,158,11,0.7)] hover:shadow-[0_16px_36px_rgba(245,158,11,0.85)] transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#101215] text-white font-semibold text-xs tracking-wider uppercase shadow-[0_12px_28px_-4px_rgba(245,158,11,0.75)] hover:shadow-[0_16px_36px_rgba(245,158,11,0.9)] transition-all cursor-pointer"
                   >
                     <span>View Courses</span>
                     <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
@@ -311,7 +323,7 @@ export default function XwWebsiteShowcase() {
                 </div>
               )}
 
-              {/* ================= SLIDE 3: COURSES (3 EMBOSSED CARDS) ================= */}
+              {/* ================= SLIDE 3: WORK / COURSES (003 / 005) ================= */}
               {currentSlide === 2 && (
                 <div className="w-full">
                   <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
@@ -328,14 +340,19 @@ export default function XwWebsiteShowcase() {
                   {/* 3 Staggered Embossed Cards exactly like XW video */}
                   <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl">
                     {/* Card 1: Circle Symbol */}
-                    <div className="relative p-7 sm:p-8 rounded-[24px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.7)] flex flex-col justify-between min-h-[360px] group hover:-translate-y-1 transition-all duration-300">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      className="relative p-7 sm:p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between min-h-[370px] group hover:-translate-y-1 transition-all duration-300"
+                    >
                       <div>
                         {/* 3D Illuminated Symbol */}
                         <div className="w-24 h-24 mb-6 relative">
                           <img
                             src="/icons-3d/symbol_circle.png"
                             alt="Class 9 & 10 Foundation"
-                            className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(245,158,11,0.4)] transition-transform duration-300 group-hover:scale-105"
+                            className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(245,158,11,0.45)] transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>
 
@@ -344,7 +361,7 @@ export default function XwWebsiteShowcase() {
                         </h3>
 
                         <p className="text-xs sm:text-sm text-[#4A4E57] leading-relaxed mb-6 font-normal">
-                          We build fundamental concept clarity by connecting physics principles and chemistry reactions with everyday intuition and board exam practice.
+                          We build fundamental concept clarity by connecting physics principles and chemistry reactions with mathematical intuition and board preparation.
                         </p>
                       </div>
 
@@ -354,17 +371,22 @@ export default function XwWebsiteShowcase() {
                           Curriculum <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 2: Triangle Symbol */}
-                    <div className="relative p-7 sm:p-8 rounded-[24px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.7)] flex flex-col justify-between min-h-[360px] group hover:-translate-y-1 transition-all duration-300">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="relative p-7 sm:p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between min-h-[370px] group hover:-translate-y-1 transition-all duration-300"
+                    >
                       <div>
                         {/* 3D Illuminated Symbol */}
                         <div className="w-24 h-24 mb-6 relative">
                           <img
                             src="/icons-3d/symbol_triangle.png"
                             alt="Class 11 Higher Secondary"
-                            className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(245,158,11,0.4)] transition-transform duration-300 group-hover:scale-105"
+                            className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(245,158,11,0.45)] transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>
 
@@ -373,7 +395,7 @@ export default function XwWebsiteShowcase() {
                         </h3>
 
                         <p className="text-xs sm:text-sm text-[#4A4E57] leading-relaxed mb-6 font-normal">
-                          Rigorous problem-solving and mathematical derivations across Mechanics, Thermodynamics, Chemical Bonding, and organic basics.
+                          Rigorous problem-solving across Mechanics, Thermodynamics, Chemical Bonding, and organic reaction mechanisms with regular tests.
                         </p>
                       </div>
 
@@ -383,17 +405,22 @@ export default function XwWebsiteShowcase() {
                           Curriculum <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 3: Diamond Symbol */}
-                    <div className="relative p-7 sm:p-8 rounded-[24px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.7)] flex flex-col justify-between min-h-[360px] group hover:-translate-y-1 transition-all duration-300">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      className="relative p-7 sm:p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between min-h-[370px] group hover:-translate-y-1 transition-all duration-300"
+                    >
                       <div>
                         {/* 3D Illuminated Symbol */}
                         <div className="w-24 h-24 mb-6 relative">
                           <img
                             src="/icons-3d/symbol_diamond.png"
                             alt="Class 12 Board Mastery"
-                            className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(245,158,11,0.4)] transition-transform duration-300 group-hover:scale-105"
+                            className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(245,158,11,0.45)] transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>
 
@@ -402,7 +429,7 @@ export default function XwWebsiteShowcase() {
                         </h3>
 
                         <p className="text-xs sm:text-sm text-[#4A4E57] leading-relaxed mb-6 font-normal">
-                          Master Electromagnetism, Wave Optics, Physical Chemistry, and advanced Organic reactions with dedicated board mock tests and revision drills.
+                          Master Electromagnetism, Wave Optics, Physical Chemistry, and advanced Organic reactions with dedicated board mock test series.
                         </p>
                       </div>
 
@@ -412,12 +439,12 @@ export default function XwWebsiteShowcase() {
                           Curriculum <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               )}
 
-              {/* ================= SLIDE 4: TEACHERS ================= */}
+              {/* ================= SLIDE 4: PLANS / TEACHERS (004 / 005) ================= */}
               {currentSlide === 3 && (
                 <div className="w-full max-w-4xl">
                   <div className="mb-8">
@@ -429,14 +456,14 @@ export default function XwWebsiteShowcase() {
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     {/* Physics Teacher Card */}
-                    <div className="p-8 rounded-[24px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.7)] flex flex-col justify-between">
+                    <div className="p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between">
                       <div>
                         <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-black/10 text-black tracking-wider uppercase mb-4 inline-block">
                           PHYSICS SPECIALIST · CLASSES 9–12
                         </span>
                         <h3 className="font-heading text-2xl font-bold text-[#15171A] mb-2">Physics Teacher</h3>
                         <p className="text-xs sm:text-sm text-[#4A4E57] leading-relaxed mb-6">
-                          Specializes in Mechanics, Electrodynamics, and Optics. Believes in teaching through real-world experiments and graphical analysis so equations become self-evident.
+                          Specializes in Mechanics, Electrodynamics, and Optics. Teaches using physical intuition and mathematical models so students solve complex problems with ease.
                         </p>
                       </div>
 
@@ -449,14 +476,14 @@ export default function XwWebsiteShowcase() {
                     </div>
 
                     {/* Chemistry Teacher Card */}
-                    <div className="p-8 rounded-[24px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.7)] flex flex-col justify-between">
+                    <div className="p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between">
                       <div>
                         <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-black/10 text-black tracking-wider uppercase mb-4 inline-block">
                           CHEMISTRY SPECIALIST · CLASSES 9–12
                         </span>
                         <h3 className="font-heading text-2xl font-bold text-[#15171A] mb-2">Chemistry Teacher</h3>
                         <p className="text-xs sm:text-sm text-[#4A4E57] leading-relaxed mb-6">
-                          Specializes in Organic Mechanisms, Thermodynamics, and Periodic Trends. Focuses on molecular visualization so students understand the logic of reactions.
+                          Specializes in Organic Mechanisms, Thermodynamics, and Periodic Properties. Transforms chemistry from memorization into logical, structured mastery.
                         </p>
                       </div>
 
@@ -471,7 +498,7 @@ export default function XwWebsiteShowcase() {
                 </div>
               )}
 
-              {/* ================= SLIDE 5: CONTACT & ENROLL ================= */}
+              {/* ================= SLIDE 5: CONTACT (005 / 005) ================= */}
               {currentSlide === 4 && (
                 <div className="w-full max-w-4xl">
                   <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -486,22 +513,22 @@ export default function XwWebsiteShowcase() {
 
                       <div className="space-y-3 mb-6">
                         <div className="flex items-center gap-3 text-xs font-medium text-[#15171A]">
-                          <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center text-amber-500">
+                          <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center text-amber-600">
                             <Check className="w-3.5 h-3.5" />
                           </div>
-                          <span>Personal counseling session before admission</span>
+                          <span>Direct personal counseling session with teachers</span>
                         </div>
                         <div className="flex items-center gap-3 text-xs font-medium text-[#15171A]">
-                          <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center text-amber-500">
+                          <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center text-amber-600">
                             <Check className="w-3.5 h-3.5" />
                           </div>
                           <span>Complete syllabus coverage for Classes 9, 10, 11 & 12</span>
                         </div>
                         <div className="flex items-center gap-3 text-xs font-medium text-[#15171A]">
-                          <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center text-amber-500">
+                          <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center text-amber-600">
                             <Check className="w-3.5 h-3.5" />
                           </div>
-                          <span>Small batches with dedicated doubt solving</span>
+                          <span>Small batch sizes with personalized attention</span>
                         </div>
                       </div>
 
@@ -510,14 +537,14 @@ export default function XwWebsiteShowcase() {
                           href="https://wa.me/919876543210"
                           target="_blank"
                           rel="noreferrer"
-                          className="px-5 py-2.5 rounded-full bg-[#25D366] text-white font-semibold text-xs flex items-center gap-2 hover:bg-[#20bd5a] transition-all shadow-md"
+                          className="px-5 py-2.5 rounded-full bg-[#25D366] text-white font-semibold text-xs flex items-center gap-2 hover:bg-[#20bd5a] transition-all shadow-md cursor-pointer"
                         >
                           <MessageSquare className="w-3.5 h-3.5" />
                           WhatsApp Us
                         </a>
                         <a
                           href="tel:+919876543210"
-                          className="px-5 py-2.5 rounded-full border border-black/20 hover:border-black text-black font-semibold text-xs flex items-center gap-2 transition-all"
+                          className="px-5 py-2.5 rounded-full border border-black/20 hover:border-black text-black font-semibold text-xs flex items-center gap-2 transition-all cursor-pointer"
                         >
                           <Phone className="w-3.5 h-3.5" />
                           Call Teachers
@@ -525,15 +552,15 @@ export default function XwWebsiteShowcase() {
                       </div>
                     </div>
 
-                    {/* Interactive Quick Form Card */}
-                    <div className="p-6 sm:p-8 rounded-[24px] bg-white/70 backdrop-blur-xl border border-white shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
+                    {/* Quick Form Card */}
+                    <div className="p-6 sm:p-8 rounded-[28px] bg-white/80 backdrop-blur-xl border border-white shadow-[0_20px_40px_rgba(0,0,0,0.12)]">
                       {isFormSubmitted ? (
                         <div className="text-center py-8">
                           <div className="w-12 h-12 rounded-full bg-green-500/10 text-green-600 flex items-center justify-center mx-auto mb-3">
                             <Check className="w-6 h-6" />
                           </div>
                           <h4 className="font-heading font-bold text-lg text-[#15171A] mb-1">Enquiry Received!</h4>
-                          <p className="text-xs text-[#4A4E57]">Our teachers will contact you within 24 hours.</p>
+                          <p className="text-xs text-[#4A4E57]">Our teachers will connect with you within 24 hours.</p>
                         </div>
                       ) : (
                         <form onSubmit={handleFormSubmit} className="space-y-4">
@@ -579,7 +606,7 @@ export default function XwWebsiteShowcase() {
 
                           <button
                             type="submit"
-                            className="w-full py-3 rounded-full bg-[#101215] text-white font-semibold text-xs tracking-wider uppercase shadow-[0_12px_24px_-4px_rgba(245,158,11,0.7)] hover:shadow-[0_16px_32px_rgba(245,158,11,0.85)] transition-all cursor-pointer flex items-center justify-center gap-2 mt-2"
+                            className="w-full py-3 rounded-full bg-[#101215] text-white font-semibold text-xs tracking-wider uppercase shadow-[0_12px_24px_-4px_rgba(245,158,11,0.75)] hover:shadow-[0_16px_34px_rgba(245,158,11,0.9)] transition-all cursor-pointer flex items-center justify-center gap-2 mt-2"
                           >
                             <span>Submit Enquiry</span>
                             <Send className="w-3.5 h-3.5 text-amber-400" />
@@ -595,13 +622,13 @@ export default function XwWebsiteShowcase() {
         </div>
 
         {/* Bottom Bar matching XW video */}
-        <div className="relative z-30 w-full pt-4 border-t border-black/10 flex items-center justify-between text-xs font-mono text-black/70">
+        <div className="relative z-30 w-full pt-4 border-t border-black/15 flex items-center justify-between text-xs font-mono text-black/75">
           {/* Left footnote */}
           <div className="max-w-xs sm:max-w-md truncate text-[11px]">
             {slide.footerNote}
           </div>
 
-          {/* Center Mouse Scroll Indicator */}
+          {/* Center Mouse Scroll Capsule Indicator */}
           <button
             onClick={() => setCurrentSlide((prev) => (prev + 1) % SLIDES.length)}
             className="flex items-center gap-2 cursor-pointer group"

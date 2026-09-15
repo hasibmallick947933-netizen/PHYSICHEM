@@ -36,10 +36,11 @@ function LoadingScreen() {
 function AnimatedRoutes() {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
+  const isHome = location.pathname === '/';
 
   return (
     <>
-      {!isAdmin && <Navbar />}
+      {!isAdmin && !isHome && <Navbar />}
       <Suspense fallback={<LoadingScreen />}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
