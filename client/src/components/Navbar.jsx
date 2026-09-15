@@ -9,11 +9,17 @@ export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
 
+  const isHome = location.pathname === '/';
+
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      const threshold = isHome ? window.innerHeight * 1.6 : 50;
+      setIsScrolled(window.scrollY > threshold);
+    };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     setIsMobileOpen(false);
@@ -28,12 +34,14 @@ export default function Navbar() {
     <>
       <motion.nav
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        animate={{ y: (isHome && !isScrolled) ? -100 : 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-[#07111F]/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20'
-            : 'bg-transparent'
+          (isHome && !isScrolled)
+            ? 'pointer-events-none opacity-0'
+            : isScrolled
+            ? 'bg-[#07111F]/85 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/40 opacity-100'
+            : 'bg-transparent opacity-100'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

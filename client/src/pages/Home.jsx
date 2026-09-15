@@ -5,6 +5,7 @@ import {
   BookOpen, GraduationCap, Check, Sparkles, Beaker
 } from 'lucide-react';
 import FrameSequenceLanding from '../components/FrameSequenceLanding';
+import XwInteractiveShowcase from '../components/XwInteractiveShowcase';
 import { subjects, classes, teachers, methodologySteps, benefits, trustPoints } from '../data/siteData';
 
 const fadeUp = {
@@ -125,90 +126,8 @@ export default function Home() {
       {/* Frame Sequence Landing */}
       <FrameSequenceLanding />
 
-      {/* ======== HERO SECTION ======== */}
-      <section id="main-experience" className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 bg-[#07111F]" />
-        <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-[#38BDF8]/5 blur-[150px] rounded-full" />
-        <div className="absolute bottom-1/4 -left-1/4 w-[400px] h-[400px] bg-[#818CF8]/5 blur-[120px] rounded-full" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left - Content */}
-            <div>
-              <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.1 }}>
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#38BDF8]/10 border border-[#38BDF8]/20 rounded-full text-[#38BDF8] text-xs font-semibold uppercase tracking-wider mb-6">
-                  <Zap className="w-3.5 h-3.5" />
-                  Physics + Chemistry | Classes 9–12
-                </span>
-              </motion.div>
-
-              <motion.h1
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: 0.2 }}
-                className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6"
-              >
-                Understand the{' '}
-                <span className="text-gradient-blue">Concept.</span>
-                <br />
-                Master the{' '}
-                <span className="text-gradient-blue">Science.</span>
-              </motion.h1>
-
-              <motion.p
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: 0.3 }}
-                className="text-[#A8B7C9] text-lg lg:text-xl leading-relaxed mb-8 max-w-lg"
-              >
-                Build strong scientific foundations with concept-focused Physics and Chemistry coaching designed for Classes 9–12.
-              </motion.p>
-
-              <motion.div
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: 0.4 }}
-                className="flex flex-wrap gap-4 mb-8"
-              >
-                <Link
-                  to="/courses"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#38BDF8] hover:bg-[#38BDF8]/90 text-[#07111F] font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#38BDF8]/25 hover:-translate-y-0.5"
-                >
-                  Explore Courses
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  to="/teachers"
-                  className="inline-flex items-center gap-2 px-8 py-4 border border-[#38BDF8]/30 text-[#38BDF8] hover:bg-[#38BDF8]/10 font-semibold rounded-xl transition-all duration-300"
-                >
-                  Meet Our Teachers
-                </Link>
-              </motion.div>
-
-              <motion.div
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: 0.5 }}
-                className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[#A8B7C9]/70 text-sm"
-              >
-                {['Concept clarity', 'Problem solving', 'Academic confidence'].map((item) => (
-                  <span key={item} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-[#38BDF8] rounded-full" />
-                    {item}
-                  </span>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Right - Visual */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
-            >
-              <HeroVisual />
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* ======== XW VIDEO SHOWCASE (Main Website Experience) ======== */}
+      <XwInteractiveShowcase />
 
       {/* ======== TRUST / INTRODUCTION SECTION ======== */}
       <section className="relative py-24 lg:py-32 bg-[#0D1B2A]">
