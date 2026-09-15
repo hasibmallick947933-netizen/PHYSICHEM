@@ -126,7 +126,7 @@ export default function Home() {
       <FrameSequenceLanding />
 
       {/* ======== HERO SECTION ======== */}
-      <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
+      <section id="main-experience" className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 bg-[#07111F]" />
         <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-[#38BDF8]/5 blur-[150px] rounded-full" />
