@@ -5,7 +5,7 @@ import {
   BookOpen, GraduationCap, Check, Sparkles, Beaker
 } from 'lucide-react';
 import FrameSequenceLanding from '../components/FrameSequenceLanding';
-import XwInteractiveShowcase from '../components/XwInteractiveShowcase';
+import XwWebsiteShowcase from '../components/XwWebsiteShowcase';
 import { subjects, classes, teachers, methodologySteps, benefits, trustPoints } from '../data/siteData';
 
 const fadeUp = {
@@ -126,8 +126,8 @@ export default function Home() {
       {/* Frame Sequence Landing */}
       <FrameSequenceLanding />
 
-      {/* ======== XW VIDEO SHOWCASE (Main Website Experience) ======== */}
-      <XwInteractiveShowcase />
+      {/* ======== XW VIDEO SHOWCASE (Full Website Experience) ======== */}
+      <XwWebsiteShowcase />
 
       {/* ======== TRUST / INTRODUCTION SECTION ======== */}
       <section className="relative py-24 lg:py-32 bg-[#0D1B2A]">
