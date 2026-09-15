@@ -1,0 +1,10 @@
+node_modules/
+.env
+dist/
+.DS_Store
+*.log
+
+# Large assets — too big for git, host separately or use Git LFS
+client/public/frames/
+ezgif-68416b8ec52e0f29-png-split/
+*.mp4
