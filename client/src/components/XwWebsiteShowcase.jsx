@@ -10,46 +10,47 @@ const SLIDES = [
     id: 'home',
     nav: 'HOME',
     index: '001 / 005',
-    headingLine1: 'UNDERSTAND THE CONCEPT.',
-    headingLine2: 'MASTER THE SCIENCE.',
-    subtitle: 'Dedicated Physics & Chemistry coaching for Classes 9, 10, 11 & 12. Taught through fundamental conceptual clarity, visual derivations, and structured numerical practice.',
-    footerNote: 'Building lifelong scientific fundamentals and academic confidence.',
+    headingLine1: 'UNDERSTAND',
+    headingLine2: 'THE CONCEPT.',
+    headingLine3: 'MASTER THE SCIENCE.',
+    subtitle: 'We specialize in concept-first Physics & Chemistry education for Classes 9, 10, 11 & 12.',
+    footerNote: 'Helping forward-looking students thrive with strong fundamentals and personalized mentorship.',
   },
   {
-    id: 'subjects',
-    nav: 'SUBJECTS',
+    id: 'services',
+    nav: 'SERVICES',
     index: '002 / 005',
-    headingLine1: 'TWO DEDICATED TEACHERS.',
-    headingLine2: 'ONE STRONG FOUNDATION.',
-    subtitle: 'We focus exclusively on Physics and Chemistry. By understanding the core principles behind every formula and chemical equation, students solve complex problems with intuition.',
+    headingLine1: "WE'RE A DEDICATED",
+    headingLine2: 'SCIENCE COACHING ACADEMY.',
+    subtitle: 'We deliver complete Physics & Chemistry conceptual mastery under one roof.',
     footerNote: 'Two core subjects • Zero rote memorization • Individual doubt resolution.',
   },
   {
-    id: 'courses',
-    nav: 'COURSES',
+    id: 'work',
+    nav: 'WORK',
     index: '003 / 005',
     headingLine1: 'DISCOVER',
     headingLine2: 'OUR COURSES',
-    subtitle: 'Comprehensive batches engineered for board excellence and higher secondary scientific foundations.',
+    subtitle: 'Structured curriculum engineered for school boards and higher secondary excellence.',
     footerNote: 'Focused programs for Classes 9, 10, 11 and 12.',
   },
   {
-    id: 'teachers',
-    nav: 'TEACHERS',
+    id: 'plans',
+    nav: 'PLANS',
     index: '004 / 005',
     headingLine1: 'LEARN FROM',
     headingLine2: 'SUBJECT EXPERTS',
-    subtitle: 'Two specialized teachers with decades of dedicated mentoring in Physics and Chemistry.',
+    subtitle: 'Two dedicated teachers with deep subject mastery and personalized student mentorship.',
     footerNote: 'Direct teacher contact • Small batch sizes • Personal mentorship.',
   },
   {
     id: 'contact',
     nav: 'CONTACT',
     index: '005 / 005',
-    headingLine1: 'START YOUR',
-    headingLine2: 'LEARNING JOURNEY',
-    subtitle: 'Admissions open for Classes 9–12. Book a counseling session or talk directly with our faculty.',
-    footerNote: 'Admissions open for the 2026–2027 academic session.',
+    headingLine1: 'GET IN TOUCH',
+    headingLine2: 'WITH PHYSICHEM',
+    subtitle: 'Admissions open for Classes 9–12. Send an enquiry or talk directly with our faculty.',
+    footerNote: 'Admissions counseling available every day.',
   },
 ];
 
@@ -137,20 +138,20 @@ export default function XwWebsiteShowcase() {
     <div
       ref={containerRef}
       id="main-showcase"
-      className="relative min-h-screen py-4 sm:py-8 lg:py-10 px-2 sm:px-6 lg:px-8 flex items-center justify-center bg-[#181a1e]"
+      className="relative min-h-screen py-6 sm:py-10 px-3 sm:px-6 lg:px-10 flex items-center justify-center bg-[#212429]"
     >
-      {/* Outer Studio Ambient Backlight Glow from XW video */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95vw] h-[85vh] bg-amber-500/10 blur-[180px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[60vw] h-[20vh] bg-amber-600/15 blur-[120px] rounded-full pointer-events-none" />
+      {/* Outer Studio Ambient Backlight Glow matching frame_001.png */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[80vh] bg-amber-500/10 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[65vw] h-[18vh] bg-amber-500/15 blur-[100px] rounded-full pointer-events-none" />
 
-      {/* Titanium Website Window matching XW video (28px rounded corners, #C3C3C3 background) */}
-      <div className="relative w-full max-w-[1440px] min-h-[760px] lg:h-[860px] rounded-[24px] sm:rounded-[32px] bg-[#C3C3C3] text-[#15171A] shadow-[0_30px_90px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.25)] overflow-hidden flex flex-col justify-between p-6 sm:p-10 lg:p-12 transition-all duration-500">
+      {/* Titanium Website Window matching frame_001.png (32px rounded corners, #C3C3C3 surface) */}
+      <div className="relative w-full max-w-[1360px] min-h-[760px] lg:h-[840px] rounded-[28px] sm:rounded-[36px] bg-[#C3C3C3] text-[#111315] shadow-[0_30px_90px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.25)] overflow-hidden flex flex-col justify-between p-7 sm:p-10 lg:p-12 transition-all duration-500 select-none">
         
-        {/* Top Navigation Bar with illuminated lamp light from XW video */}
+        {/* Top Navigation Bar with illuminated lamp light */}
         <div className="relative z-30 w-full">
           <div className="flex items-center justify-between pb-3">
             {/* Logo */}
-            <Link to="/" className="font-heading text-lg sm:text-xl font-bold tracking-tight text-[#15171A] uppercase">
+            <Link to="/" className="font-heading text-lg sm:text-xl font-bold tracking-tight text-[#111315] uppercase">
               PHYSICHEM
             </Link>
 
@@ -162,13 +163,13 @@ export default function XwWebsiteShowcase() {
                   <button
                     key={s.id}
                     onClick={() => setCurrentSlide(idx)}
-                    className="relative py-2 text-xs font-mono tracking-wider uppercase transition-colors cursor-pointer text-[#15171A]"
+                    className="relative py-2 text-xs font-mono tracking-wider uppercase transition-colors cursor-pointer text-[#111315]"
                   >
                     <span className={isActive ? 'font-bold opacity-100' : 'font-normal opacity-60 hover:opacity-90'}>
                       {s.nav}
                     </span>
 
-                    {/* Illuminated Lamp Light matching XW video */}
+                    {/* Illuminated Lamp Light matching frame_001.png */}
                     {isActive && (
                       <motion.div
                         layoutId="xwLampIndicator"
@@ -209,11 +210,11 @@ export default function XwWebsiteShowcase() {
           </div>
         </div>
 
-        {/* Central Native 3D Particle Network Canvas (Replaces the external video!) */}
+        {/* Central Native 3D Particle Network Canvas */}
         <div className={`absolute inset-0 z-0 flex items-center justify-center pointer-events-none transition-opacity duration-700 ${
           currentSlide < 2 ? 'opacity-100 scale-100' : 'opacity-20 scale-90'
         }`}>
-          <div className="w-[650px] h-[650px] lg:w-[820px] lg:h-[820px]">
+          <div className="w-[680px] h-[680px] lg:w-[860px] lg:h-[860px]">
             <ParticleNetwork3D currentSlide={currentSlide} />
           </div>
         </div>
@@ -231,58 +232,67 @@ export default function XwWebsiteShowcase() {
             >
               {/* ================= SLIDE 1: HOME (001 / 005) ================= */}
               {currentSlide === 0 && (
-                <div className="max-w-2xl pt-2 pb-6">
-                  <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#15171A] leading-[1.06] mb-6">
-                    {slide.headingLine1} <br />
-                    <span>{slide.headingLine2}</span>
-                  </h1>
+                <div className="w-full pt-2 pb-4">
+                  {/* Two-column layout matching frame_001.png */}
+                  <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-start mb-8">
+                    {/* Left Column: Bold Typography */}
+                    <div>
+                      <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#111315] leading-[1.04]">
+                        {slide.headingLine1} <br />
+                        <span>{slide.headingLine2}</span>
+                      </h1>
+                    </div>
 
-                  <p className="text-[#3A3E45] text-base sm:text-lg font-normal leading-relaxed max-w-lg mb-10">
-                    {slide.subtitle}
-                  </p>
+                    {/* Right Column: Subtitle + Buttons matching frame_001.png */}
+                    <div className="pt-2">
+                      <p className="text-[#3D4148] text-sm sm:text-base font-normal leading-relaxed max-w-md mb-8">
+                        {slide.subtitle}
+                      </p>
 
-                  <div className="flex flex-wrap items-center gap-4">
-                    {/* Primary Button: Jet-black pill with golden glow */}
-                    <button
-                      onClick={() => setCurrentSlide(4)}
-                      className="px-8 py-3.5 rounded-full bg-[#101215] hover:bg-black text-white font-semibold text-xs tracking-wider uppercase shadow-[0_14px_28px_-4px_rgba(245,158,11,0.8)] hover:shadow-[0_18px_38px_rgba(245,158,11,0.95)] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
-                    >
-                      Enquire Now
-                    </button>
+                      <div className="flex items-center gap-4">
+                        {/* Primary Button: Jet-black pill with golden underglow from frame_001.png */}
+                        <button
+                          onClick={() => setCurrentSlide(4)}
+                          className="px-8 py-3 rounded-full bg-[#0E1013] hover:bg-black text-white font-semibold text-xs tracking-wider uppercase shadow-[0_12px_24px_-2px_rgba(255,168,52,0.85),0_6px_12px_rgba(255,168,52,0.5)] hover:shadow-[0_16px_32px_rgba(255,168,52,1)] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+                        >
+                          Get In Touch
+                        </button>
 
-                    {/* Secondary Button: Outlined pill */}
-                    <button
-                      onClick={() => setCurrentSlide(2)}
-                      className="px-8 py-3.5 rounded-full border border-black/30 hover:border-black text-[#15171A] font-semibold text-xs tracking-wider uppercase transition-all duration-300 hover:bg-black/5 cursor-pointer"
-                    >
-                      Our Courses
-                    </button>
+                        {/* Secondary Button: Outlined pill */}
+                        <button
+                          onClick={() => setCurrentSlide(2)}
+                          className="px-8 py-3 rounded-full border border-black/30 hover:border-black text-[#111315] font-semibold text-xs tracking-wider uppercase transition-all duration-300 hover:bg-black/5 cursor-pointer"
+                        >
+                          Our Services
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
 
-              {/* ================= SLIDE 2: SUBJECTS (002 / 005) ================= */}
+              {/* ================= SLIDE 2: SERVICES (002 / 005) ================= */}
               {currentSlide === 1 && (
                 <div className="max-w-2xl pt-2 pb-6">
-                  <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#15171A] leading-[1.1] mb-6">
+                  <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#111315] leading-[1.08] mb-6">
                     {slide.headingLine1} <br />
                     <span>{slide.headingLine2}</span>
                   </h2>
 
-                  <p className="text-[#3A3E45] text-base sm:text-lg font-normal leading-relaxed max-w-lg mb-8">
+                  <p className="text-[#3D4148] text-sm sm:text-base font-normal leading-relaxed max-w-lg mb-8">
                     {slide.subtitle}
                   </p>
 
                   <div className="grid sm:grid-cols-2 gap-4 max-w-lg mb-8">
                     <div className="p-5 rounded-2xl bg-white/50 backdrop-blur-md border border-white/70 shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
-                      <div className="font-heading font-bold text-lg text-[#15171A] mb-1">Physics Mastery</div>
+                      <div className="font-heading font-bold text-lg text-[#111315] mb-1">Physics Mastery</div>
                       <p className="text-xs text-[#4A4E57] leading-relaxed">
                         Mechanics, Electrodynamics, Optics, and Modern Physics taught through physical models and derivations.
                       </p>
                     </div>
 
                     <div className="p-5 rounded-2xl bg-white/50 backdrop-blur-md border border-white/70 shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
-                      <div className="font-heading font-bold text-lg text-[#15171A] mb-1">Chemistry Clarity</div>
+                      <div className="font-heading font-bold text-lg text-[#111315] mb-1">Chemistry Clarity</div>
                       <p className="text-xs text-[#4A4E57] leading-relaxed">
                         Organic reaction mechanisms, Physical equations, and Inorganic bonding visualized with clear logic.
                       </p>
@@ -291,7 +301,7 @@ export default function XwWebsiteShowcase() {
 
                   <button
                     onClick={() => setCurrentSlide(2)}
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#101215] text-white font-semibold text-xs tracking-wider uppercase shadow-[0_12px_28px_-4px_rgba(245,158,11,0.75)] hover:shadow-[0_16px_36px_rgba(245,158,11,0.9)] transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#0E1013] text-white font-semibold text-xs tracking-wider uppercase shadow-[0_12px_28px_-4px_rgba(245,158,11,0.75)] hover:shadow-[0_16px_36px_rgba(245,158,11,0.9)] transition-all cursor-pointer"
                   >
                     <span>View Courses</span>
                     <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
@@ -299,12 +309,12 @@ export default function XwWebsiteShowcase() {
                 </div>
               )}
 
-              {/* ================= SLIDE 3: COURSES (003 / 005) ================= */}
+              {/* ================= SLIDE 3: WORK / COURSES (003 / 005) ================= */}
               {currentSlide === 2 && (
                 <div className="w-full">
                   <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                     <div>
-                      <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#15171A]">
+                      <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#111315]">
                         {slide.headingLine1} {slide.headingLine2}
                       </h2>
                     </div>
@@ -313,17 +323,17 @@ export default function XwWebsiteShowcase() {
                     </p>
                   </div>
 
-                  {/* 3 Staggered Embossed Cards exactly like XW video */}
+                  {/* 3 Staggered Embossed Cards exactly like frame_020.png */}
                   <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl">
                     {/* Card 1: Circle Symbol */}
                     <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.1 }}
-                      className="relative p-7 sm:p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between min-h-[370px] group hover:-translate-y-1 transition-all duration-300"
+                      className="relative p-7 sm:p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between min-h-[380px] group hover:-translate-y-1 transition-all duration-300"
                     >
                       <div>
-                        {/* 3D Illuminated Symbol */}
+                        {/* 3D Illuminated Symbol from frame_020.png */}
                         <div className="w-24 h-24 mb-6 relative">
                           <img
                             src="/icons-3d/symbol_circle.png"
@@ -332,7 +342,7 @@ export default function XwWebsiteShowcase() {
                           />
                         </div>
 
-                        <h3 className="font-heading text-xl font-bold text-[#15171A] mb-2">
+                        <h3 className="font-heading text-xl font-bold text-[#111315] mb-2">
                           Class 9 & 10 Foundation
                         </h3>
 
@@ -341,7 +351,7 @@ export default function XwWebsiteShowcase() {
                         </p>
                       </div>
 
-                      <div className="pt-4 border-t border-black/10 flex items-center justify-between text-xs font-semibold text-[#15171A]">
+                      <div className="pt-4 border-t border-black/10 flex items-center justify-between text-xs font-semibold text-[#111315]">
                         <span>Physics & Chemistry</span>
                         <Link to="/courses" className="text-[#0284C7] flex items-center gap-1 hover:underline">
                           Curriculum <ArrowRight className="w-3.5 h-3.5" />
@@ -354,10 +364,10 @@ export default function XwWebsiteShowcase() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                      className="relative p-7 sm:p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between min-h-[370px] group hover:-translate-y-1 transition-all duration-300"
+                      className="relative p-7 sm:p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between min-h-[380px] group hover:-translate-y-1 transition-all duration-300"
                     >
                       <div>
-                        {/* 3D Illuminated Symbol */}
+                        {/* 3D Illuminated Symbol from frame_020.png */}
                         <div className="w-24 h-24 mb-6 relative">
                           <img
                             src="/icons-3d/symbol_triangle.png"
@@ -366,7 +376,7 @@ export default function XwWebsiteShowcase() {
                           />
                         </div>
 
-                        <h3 className="font-heading text-xl font-bold text-[#15171A] mb-2">
+                        <h3 className="font-heading text-xl font-bold text-[#111315] mb-2">
                           Class 11 Higher Secondary
                         </h3>
 
@@ -375,7 +385,7 @@ export default function XwWebsiteShowcase() {
                         </p>
                       </div>
 
-                      <div className="pt-4 border-t border-black/10 flex items-center justify-between text-xs font-semibold text-[#15171A]">
+                      <div className="pt-4 border-t border-black/10 flex items-center justify-between text-xs font-semibold text-[#111315]">
                         <span>Core Science Base</span>
                         <Link to="/courses" className="text-[#0284C7] flex items-center gap-1 hover:underline">
                           Curriculum <ArrowRight className="w-3.5 h-3.5" />
@@ -388,10 +398,10 @@ export default function XwWebsiteShowcase() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
-                      className="relative p-7 sm:p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between min-h-[370px] group hover:-translate-y-1 transition-all duration-300"
+                      className="relative p-7 sm:p-8 rounded-[28px] bg-[#C3C3C3] border border-black/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)] flex flex-col justify-between min-h-[380px] group hover:-translate-y-1 transition-all duration-300"
                     >
                       <div>
-                        {/* 3D Illuminated Symbol */}
+                        {/* 3D Illuminated Symbol from frame_020.png */}
                         <div className="w-24 h-24 mb-6 relative">
                           <img
                             src="/icons-3d/symbol_diamond.png"
@@ -400,7 +410,7 @@ export default function XwWebsiteShowcase() {
                           />
                         </div>
 
-                        <h3 className="font-heading text-xl font-bold text-[#15171A] mb-2">
+                        <h3 className="font-heading text-xl font-bold text-[#111315] mb-2">
                           Class 12 Board Mastery
                         </h3>
 
@@ -409,7 +419,7 @@ export default function XwWebsiteShowcase() {
                         </p>
                       </div>
 
-                      <div className="pt-4 border-t border-black/10 flex items-center justify-between text-xs font-semibold text-[#15171A]">
+                      <div className="pt-4 border-t border-black/10 flex items-center justify-between text-xs font-semibold text-[#111315]">
                         <span>Board & Excellence</span>
                         <Link to="/courses" className="text-[#0284C7] flex items-center gap-1 hover:underline">
                           Curriculum <ArrowRight className="w-3.5 h-3.5" />
@@ -420,11 +430,11 @@ export default function XwWebsiteShowcase() {
                 </div>
               )}
 
-              {/* ================= SLIDE 4: TEACHERS (004 / 005) ================= */}
+              {/* ================= SLIDE 4: PLANS / TEACHERS (004 / 005) ================= */}
               {currentSlide === 3 && (
                 <div className="w-full max-w-4xl">
                   <div className="mb-8">
-                    <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#15171A] mb-2">
+                    <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#111315] mb-2">
                       {slide.headingLine1} {slide.headingLine2}
                     </h2>
                     <p className="text-sm text-[#4A4E57]">{slide.subtitle}</p>
@@ -437,7 +447,7 @@ export default function XwWebsiteShowcase() {
                         <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-black/10 text-black tracking-wider uppercase mb-4 inline-block">
                           PHYSICS SPECIALIST · CLASSES 9–12
                         </span>
-                        <h3 className="font-heading text-2xl font-bold text-[#15171A] mb-2">Physics Teacher</h3>
+                        <h3 className="font-heading text-2xl font-bold text-[#111315] mb-2">Physics Teacher</h3>
                         <p className="text-xs sm:text-sm text-[#4A4E57] leading-relaxed mb-6">
                           Specializes in Mechanics, Electrodynamics, and Optics. Teaches using physical intuition and mathematical models so students solve complex problems with ease.
                         </p>
@@ -457,7 +467,7 @@ export default function XwWebsiteShowcase() {
                         <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-black/10 text-black tracking-wider uppercase mb-4 inline-block">
                           CHEMISTRY SPECIALIST · CLASSES 9–12
                         </span>
-                        <h3 className="font-heading text-2xl font-bold text-[#15171A] mb-2">Chemistry Teacher</h3>
+                        <h3 className="font-heading text-2xl font-bold text-[#111315] mb-2">Chemistry Teacher</h3>
                         <p className="text-xs sm:text-sm text-[#4A4E57] leading-relaxed mb-6">
                           Specializes in Organic Mechanisms, Thermodynamics, and Periodic Properties. Transforms chemistry from memorization into logical, structured mastery.
                         </p>
@@ -479,7 +489,7 @@ export default function XwWebsiteShowcase() {
                 <div className="w-full max-w-4xl">
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div>
-                      <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#15171A] mb-4">
+                      <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#111315] mb-4">
                         {slide.headingLine1} <br />
                         <span>{slide.headingLine2}</span>
                       </h2>
@@ -488,19 +498,19 @@ export default function XwWebsiteShowcase() {
                       </p>
 
                       <div className="space-y-3 mb-6">
-                        <div className="flex items-center gap-3 text-xs font-medium text-[#15171A]">
+                        <div className="flex items-center gap-3 text-xs font-medium text-[#111315]">
                           <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center text-amber-600">
                             <Check className="w-3.5 h-3.5" />
                           </div>
                           <span>Direct personal counseling session with teachers</span>
                         </div>
-                        <div className="flex items-center gap-3 text-xs font-medium text-[#15171A]">
+                        <div className="flex items-center gap-3 text-xs font-medium text-[#111315]">
                           <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center text-amber-600">
                             <Check className="w-3.5 h-3.5" />
                           </div>
                           <span>Complete syllabus coverage for Classes 9, 10, 11 & 12</span>
                         </div>
-                        <div className="flex items-center gap-3 text-xs font-medium text-[#15171A]">
+                        <div className="flex items-center gap-3 text-xs font-medium text-[#111315]">
                           <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center text-amber-600">
                             <Check className="w-3.5 h-3.5" />
                           </div>
@@ -535,12 +545,12 @@ export default function XwWebsiteShowcase() {
                           <div className="w-12 h-12 rounded-full bg-green-500/10 text-green-600 flex items-center justify-center mx-auto mb-3">
                             <Check className="w-6 h-6" />
                           </div>
-                          <h4 className="font-heading font-bold text-lg text-[#15171A] mb-1">Enquiry Received!</h4>
+                          <h4 className="font-heading font-bold text-lg text-[#111315] mb-1">Enquiry Received!</h4>
                           <p className="text-xs text-[#4A4E57]">Our teachers will connect with you within 24 hours.</p>
                         </div>
                       ) : (
                         <form onSubmit={handleFormSubmit} className="space-y-4">
-                          <h4 className="font-heading font-bold text-base text-[#15171A] mb-1">Quick Admission Enquiry</h4>
+                          <h4 className="font-heading font-bold text-base text-[#111315] mb-1">Quick Admission Enquiry</h4>
                           <div>
                             <label className="block text-[11px] font-mono text-[#4A4E57] uppercase mb-1">Student Name</label>
                             <input
@@ -549,7 +559,7 @@ export default function XwWebsiteShowcase() {
                               placeholder="Enter student name"
                               value={formData.name}
                               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                              className="w-full px-3.5 py-2 rounded-xl bg-black/5 border border-black/10 text-xs text-[#15171A] focus:outline-none focus:border-black/40"
+                              className="w-full px-3.5 py-2 rounded-xl bg-black/5 border border-black/10 text-xs text-[#111315] focus:outline-none focus:border-black/40"
                             />
                           </div>
 
@@ -562,7 +572,7 @@ export default function XwWebsiteShowcase() {
                                 placeholder="Phone number"
                                 value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                className="w-full px-3.5 py-2 rounded-xl bg-black/5 border border-black/10 text-xs text-[#15171A] focus:outline-none focus:border-black/40"
+                                className="w-full px-3.5 py-2 rounded-xl bg-black/5 border border-black/10 text-xs text-[#111315] focus:outline-none focus:border-black/40"
                               />
                             </div>
                             <div>
@@ -570,7 +580,7 @@ export default function XwWebsiteShowcase() {
                               <select
                                 value={formData.grade}
                                 onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
-                                className="w-full px-3.5 py-2 rounded-xl bg-black/5 border border-black/10 text-xs text-[#15171A] focus:outline-none focus:border-black/40"
+                                className="w-full px-3.5 py-2 rounded-xl bg-black/5 border border-black/10 text-xs text-[#111315] focus:outline-none focus:border-black/40"
                               >
                                 <option>Class 9</option>
                                 <option>Class 10</option>
@@ -582,7 +592,7 @@ export default function XwWebsiteShowcase() {
 
                           <button
                             type="submit"
-                            className="w-full py-3 rounded-full bg-[#101215] text-white font-semibold text-xs tracking-wider uppercase shadow-[0_12px_24px_-4px_rgba(245,158,11,0.75)] hover:shadow-[0_16px_34px_rgba(245,158,11,0.9)] transition-all cursor-pointer flex items-center justify-center gap-2 mt-2"
+                            className="w-full py-3 rounded-full bg-[#0E1013] text-white font-semibold text-xs tracking-wider uppercase shadow-[0_12px_24px_-2px_rgba(255,168,52,0.85),0_6px_12px_rgba(255,168,52,0.5)] hover:shadow-[0_16px_34px_rgba(255,168,52,1)] transition-all cursor-pointer flex items-center justify-center gap-2 mt-2"
                           >
                             <span>Submit Enquiry</span>
                             <Send className="w-3.5 h-3.5 text-amber-400" />
@@ -597,7 +607,7 @@ export default function XwWebsiteShowcase() {
           </AnimatePresence>
         </div>
 
-        {/* Bottom Bar matching XW video */}
+        {/* Bottom Bar matching frame_001.png */}
         <div className="relative z-30 w-full pt-4 border-t border-black/15 flex items-center justify-between text-xs font-mono text-black/75">
           {/* Left footnote */}
           <div className="max-w-xs sm:max-w-md truncate text-[11px]">
@@ -609,7 +619,7 @@ export default function XwWebsiteShowcase() {
             onClick={() => setCurrentSlide((prev) => (prev + 1) % SLIDES.length)}
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <div className="w-5 h-8 border-2 border-black/40 group-hover:border-black rounded-full flex justify-center pt-1 transition-colors">
+            <div className="w-5 h-8 border-2 border-black/35 group-hover:border-black rounded-full flex justify-center pt-1 transition-colors">
               <div className="w-1 h-2 bg-black rounded-full animate-bounce" />
             </div>
             <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider font-semibold">
